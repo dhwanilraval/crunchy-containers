@@ -18,9 +18,6 @@ ENV PGVERSION="9.6" PGDG_REPO="pgdg-centos96-9.6-3.noarch.rpm"
 
 RUN rpm -Uvh https://download.postgresql.org/pub/repos/yum/${PGVERSION}/redhat/rhel-7-x86_64/${PGDG_REPO}
 
-RUN groupadd postgres -g 26
-RUN useradd -u 26 -g 26 postgres
-
 RUN yum -y update && yum -y install epel-release \
  && yum -y update glibc-common \
  && yum -y install bind-utils \
@@ -50,6 +47,9 @@ RUN mkdir -p /opt/cpm/bin /opt/cpm/conf /pgdata /pgwal /pgconf /backup /recover 
 
 RUN chown -R postgres:postgres /opt/cpm /var/lib/pgsql \
     /pgdata /pgwal /pgconf /backup /recover /backrestrepo
+    
+RUN chmod -R 777 /opt/cpm /var/lib/pgsql \
+    /pgdata /pgwal /pgconf /backup /recover /backrestrepo    
 
 # Link pgbackrest.conf to default location for convenience
 RUN ln -sf /tmp/pgbackrest.conf /etc/pgbackrest.conf
