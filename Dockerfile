@@ -44,7 +44,7 @@ ENV PGROOT="/usr/pgsql-${PGVERSION}"
 # HOME is / in OCP
 ADD conf/.bash_profile /var/lib/pgsql/
 ADD conf/.bash_profile /
-ADD conf/.bashrc /
+# ADD conf/.bashrc /
 
 RUN mkdir -p /opt/cpm/bin /opt/cpm/conf /pgdata /pgwal /pgconf /backup /recover /backrestrepo /sshd
 
