@@ -68,7 +68,7 @@ VOLUME ["/pgconf", "/pgdata", "/pgwal", "/backup", "/recover", "/backrestrepo", 
 EXPOSE 5432
 
 ADD bin/postgres /opt/cpm/bin
-ADD bin/common /opt/cpm/bin
+# ADD bin/common /opt/cpm/bin
 ADD conf/postgres /opt/cpm/conf
 ADD tools/pgmonitor/exporter/postgres /opt/cpm/bin/pgmonitor
 
